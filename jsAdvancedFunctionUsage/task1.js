@@ -6,7 +6,7 @@ function handleNum(number, handleEven, handleOdd) {
             handleOdd(number)
         }
     } catch (e) {
-
+        console.error(e.message)
     }
 }
 
