@@ -59,15 +59,11 @@ export class Book {
             return 0
         }
 
-        let oldestYear = books[0].year
+        let oldestYear = new Date().getFullYear()
         let oldestBook
 
         for (const book of books) {
-            //console.log(`Зараз я на книзі ${book.title}`)
-            //console.log(`Зараз в мене старіший рік це ${oldestYear}`)
-
             if (book.year < oldestYear) {
-                //console.log(`Призначаю старішу книгу ${book.year}`)
                 oldestYear = book.year
                 oldestBook = book
             }
