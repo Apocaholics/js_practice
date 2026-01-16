@@ -1,4 +1,4 @@
-class Book {
+export class Book {
     constructor(title, author, year) {
         this._title = title,
             this._author = author,
@@ -49,26 +49,46 @@ class Book {
     }
 
     static getOdlestBook(books) {
-        let oldestYear = books[0]._year
-        let oldestBook
-
         if (!books.length) {
             console.log("Books list is empty")
             return 0
         }
 
+        if (!this.#isBooksListHasBook(books)) {
+            console.log("List don't have any book")
+            return 0
+        }
+
+        let oldestYear = books[0].year
+        let oldestBook
+
         for (const book of books) {
-            if (!(book instanceof Book)) {
-                console.log(`${book} isn't a book`)
-                continue
-            }
+            //console.log(`Зараз я на книзі ${book.title}`)
+            //console.log(`Зараз в мене старіший рік це ${oldestYear}`)
 
             if (book.year < oldestYear) {
-                oldestBook = book.year
+                //console.log(`Призначаю старішу книгу ${book.year}`)
+                oldestYear = book.year
                 oldestBook = book
             }
         }
 
         return oldestBook
+    }
+
+    static #isBooksListHasBook(books) {
+        let bookCounter = 0
+
+        for (const book of books) {
+            if (book instanceof Book) {
+                bookCounter++
+            }
+        }
+
+        if (bookCounter != 0) {
+            return true
+        } else {
+            return false
+        }
     }
 }
